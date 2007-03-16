@@ -4,14 +4,15 @@ Version:	0.4.1
 Release:	1
 License:	BSD
 Group:		Development/Tools
-Source0:	http://sacredspiral.co.uk/~nenolod/%{name}/%{name}-%{version}.tgz
+Source0:	http://sacredspiral.co.uk/~nenolod/mcs/%{name}-%{version}.tgz
 # Source0-md5:	d09b42e9d51ea32c6326f0bbcad86c9e
 URL:		http://sacredspiral.co.uk/~nenolod/mcs/
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-mcs abstract the storage of configuration settings away from userland applications.
+mcs abstract the storage of configuration settings away from userland
+applications.
 
 %package libs
 Summary:	mcs library
@@ -25,10 +26,10 @@ mcs library.
 Biblioteka mcs.
 
 %package devel
-Summary:        Header files for mcs
-Summary(pl.UTF-8):    Pliki nagłówkowe mcs
-Group:          Development/Libraries
-Requires:       %{name}-libs = %{version}-%{release}
+Summary:	Header files for mcs
+Summary(pl.UTF-8):	Pliki nagłówkowe mcs
+Group:		Development/Libraries
+Requires:	%{name}-libs = %{version}-%{release}
 
 %description devel
 Header files for mcs.
