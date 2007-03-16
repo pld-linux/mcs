@@ -1,3 +1,4 @@
+# TODO: build GConf and Kconfig backends (?)
 Summary:	mcs abstract the storage of configuration settings away from userland applications
 Name:		mcs
 Version:	0.4.1
