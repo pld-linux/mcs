@@ -1,5 +1,8 @@
-# TODO: build GConf and Kconfig backends (?)
-Summary:	mcs abstract the storage of configuration settings away from userland applications
+# TODO:
+# - pl description and summary
+# - build GConf and Kconfig backends (?)
+#
+Summary:	mcs - simple, abstractable configuration library
 Name:		mcs
 Version:	0.4.1
 Release:	1
@@ -12,8 +15,14 @@ Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-mcs abstract the storage of configuration settings away from userland
-applications.
+mcs is a library and set of userland tools which abstract the storage
+of configuration settings away from userland applications. It is hoped
+that by using mcs, that the applications which use it will generally
+have a more congruent feeling in regards to settings. There have been
+other projects like this before (such as GConf), but unlike those
+projects, mcs strictly handles abstraction. It doesn't impose any
+specific data storage requirement, nor is it tied to any desktop
+environment or software suite.
 
 %package libs
 Summary:	mcs library
@@ -42,7 +51,8 @@ Pliki nagłówkowe mcs.
 %setup -q
 
 %build
-%configure
+%configure \
+	--enable-static
 
 %{__make}
 
@@ -68,7 +78,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmcs.so.*
+%attr(755,root,root) %{_libdir}/libmcs.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmcs.so.[0-9]
 %dir %{_libdir}/%{name}
 %attr(755,root,root) %{_libdir}/%{name}/libkeyfile.so
 
