@@ -51,9 +51,7 @@ Pliki nagłówkowe mcs.
 %setup -q
 
 %build
-%configure \
-	--enable-static
-
+%configure
 %{__make}
 
 %install
