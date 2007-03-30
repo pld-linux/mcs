@@ -1,8 +1,8 @@
 # TODO:
-# - pl description and summary
 # - build GConf and Kconfig backends (?)
 #
 Summary:	mcs - simple, abstractable configuration library
+Summary(pl.UTF-8):	mcs - prosta, abstrakcyjna biblioteka konfiguracji
 Name:		mcs
 Version:	0.4.1
 Release:	1
@@ -23,6 +23,15 @@ other projects like this before (such as GConf), but unlike those
 projects, mcs strictly handles abstraction. It doesn't impose any
 specific data storage requirement, nor is it tied to any desktop
 environment or software suite.
+
+%description -l pl.UTF-8
+mcs to biblioteka i zbiór narzędzi tworzących abstrakcję
+przechowywania ustawień konfiguracyjnych dla aplikacji użytkownika.
+Przy użyciu mcs aplikacje mają mieć bardziej zgodne odczucia odnośnie
+ustawień. Wcześniej istniały już podobne projekty (jak GConf), ale w
+przeciwieństwie do nich mcs ściśle obsługuje abstrakcję. Nie nakłada
+żadnych konkretnych wymagań co do przechowywania danych ani nie jest
+związana z żadnym środowiskiem graficznym czy pakietem oprogramowania.
 
 %package libs
 Summary:	mcs library
