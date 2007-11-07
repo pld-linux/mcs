@@ -4,12 +4,12 @@
 Summary:	mcs - simple, abstractable configuration library
 Summary(pl.UTF-8):	mcs - prosta, abstrakcyjna biblioteka konfiguracji
 Name:		mcs
-Version:	0.5.0
+Version:	0.6.0
 Release:	1
 License:	BSD
 Group:		Development/Tools
 Source0:	http://distfiles.atheme.org/lib%{name}-%{version}.tgz
-# Source0-md5:	8f3ffa800724495ca14ddd5900d7846c
+# Source0-md5:	c75046d71dc37e8a8d2d66c412db4569
 URL:		http://www.atheme.org/projects/mcs.shtml
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -60,7 +60,9 @@ Pliki nagłówkowe mcs.
 %setup -q -n lib%{name}-%{version}
 
 %build
-%configure
+%configure \
+	--disable-kconfig \
+	--disable-gconf
 %{__make}
 
 %install
@@ -89,7 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libmcs.so.*.*.*
 %ghost %attr(755,root,root) %{_libdir}/libmcs.so.?
 %dir %{_libdir}/%{name}
-%attr(755,root,root) %{_libdir}/%{name}/libkeyfile.so
+%attr(755,root,root) %{_libdir}/%{name}/keyfile.so
 
 %files devel
 %defattr(644,root,root,755)
