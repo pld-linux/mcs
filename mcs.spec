@@ -11,6 +11,7 @@ Group:		Development/Tools
 Source0:	http://distfiles.atheme.org/lib%{name}-%{version}.tgz
 # Source0-md5:	c75046d71dc37e8a8d2d66c412db4569
 URL:		http://www.atheme.org/projects/mcs.shtml
+BuildRequires:	libmowgli-devel >= 0.4.0
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
