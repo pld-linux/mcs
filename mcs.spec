@@ -5,12 +5,15 @@ Summary:	mcs - simple, abstractable configuration library
 Summary(pl.UTF-8):	mcs - prosta, abstrakcyjna biblioteka konfiguracji
 Name:		mcs
 Version:	0.6.0
-Release:	2
+Release:	3
 License:	BSD
 Group:		Development/Tools
 Source0:	http://distfiles.atheme.org/lib%{name}-%{version}.tgz
 # Source0-md5:	c75046d71dc37e8a8d2d66c412db4569
+Patch0:		%{name}-sonamefix.patch
 URL:		http://www.atheme.org/projects/mcs.shtml
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	libmowgli-devel >= 0.4.0
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -59,8 +62,11 @@ Pliki nagłówkowe mcs.
 
 %prep
 %setup -q -n lib%{name}-%{version}
+%patch0 -p1
 
 %build
+%{__aclocal} -I m4
+%{__autoconf}
 %configure \
 	--disable-kconfig \
 	--disable-gconf
