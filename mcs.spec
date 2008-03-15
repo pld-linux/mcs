@@ -30,6 +30,8 @@ projects, mcs strictly handles abstraction. It doesn't impose any
 specific data storage requirement, nor is it tied to any desktop
 environment or software suite.
 
+This package contains userland tools.
+
 %description -l pl.UTF-8
 mcs to biblioteka i zbiór narzędzi tworzących abstrakcję
 przechowywania ustawień konfiguracyjnych dla aplikacji użytkownika.
@@ -38,6 +40,8 @@ ustawień. Wcześniej istniały już podobne projekty (jak GConf), ale w
 przeciwieństwie do nich mcs ściśle obsługuje abstrakcję. Nie nakłada
 żadnych konkretnych wymagań co do przechowywania danych ani nie jest
 związana z żadnym środowiskiem graficznym czy pakietem oprogramowania.
+
+Ten pakiet zawiera narzędzia przestrzeni użytkownika.
 
 %package backend-gconf
 Summary:	The gconf backend for mcs
@@ -91,10 +95,27 @@ Summary(pl.UTF-8):	Biblioteka mcs
 Group:		Libraries
 
 %description libs
-mcs library.
+mcs is a library and set of userland tools which abstract the storage
+of configuration settings away from userland applications. It is hoped
+that by using mcs, that the applications which use it will generally
+have a more congruent feeling in regards to settings. There have been
+other projects like this before (such as GConf), but unlike those
+projects, mcs strictly handles abstraction. It doesn't impose any
+specific data storage requirement, nor is it tied to any desktop
+environment or software suite.
+
+This package contains mcs library.
 
 %description libs -l pl.UTF-8
-Biblioteka mcs.
+mcs to biblioteka i zbiór narzędzi tworzących abstrakcję
+przechowywania ustawień konfiguracyjnych dla aplikacji użytkownika.
+Przy użyciu mcs aplikacje mają mieć bardziej zgodne odczucia odnośnie
+ustawień. Wcześniej istniały już podobne projekty (jak GConf), ale w
+przeciwieństwie do nich mcs ściśle obsługuje abstrakcję. Nie nakłada
+żadnych konkretnych wymagań co do przechowywania danych ani nie jest
+związana z żadnym środowiskiem graficznym czy pakietem oprogramowania.
+
+Ten pakiet zawiera bibliotekę mcs.
 
 %prep
 %setup -q -n lib%{name}-%{version}
