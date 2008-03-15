@@ -1,20 +1,20 @@
 # TODO:
-# - build GConf and Kconfig backends (?)
+# - build GConf backend (?)
 #
 Summary:	mcs - simple, abstractable configuration library
 Summary(pl.UTF-8):	mcs - prosta, abstrakcyjna biblioteka konfiguracji
 Name:		mcs
-Version:	0.6.0
-Release:	3
+Version:	0.7.0
+Release:	1
 License:	BSD
 Group:		Development/Tools
 Source0:	http://distfiles.atheme.org/lib%{name}-%{version}.tgz
-# Source0-md5:	c75046d71dc37e8a8d2d66c412db4569
-Patch0:		%{name}-sonamefix.patch
+# Source0-md5:	0f0c779609b3481a79937c2e86660a99
 URL:		http://www.atheme.org/projects/mcs.shtml
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libmowgli-devel >= 0.4.0
+BuildRequires:	qt-devel
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -62,13 +62,15 @@ Pliki nagłówkowe mcs.
 
 %prep
 %setup -q -n lib%{name}-%{version}
-%patch0 -p1
 
 %build
+QTDIR=%{_prefix}
+CFLAGS="$CFLAGS -I%{_includedir}/qt"
+CPPFLAGS="$CPPFLAGS -I%{_includedir}/qt"
+export CFLAGS CPPFLAGS QTDIR
 %{__aclocal} -I m4
 %{__autoconf}
 %configure \
-	--disable-kconfig \
 	--disable-gconf
 %{__make}
 
@@ -99,6 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %ghost %attr(755,root,root) %{_libdir}/libmcs.so.?
 %dir %{_libdir}/%{name}
 %attr(755,root,root) %{_libdir}/%{name}/keyfile.so
+%attr(755,root,root) %{_libdir}/%{name}/kconfig.so
 
 %files devel
 %defattr(644,root,root,755)
