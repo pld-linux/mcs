@@ -58,7 +58,7 @@ environment.
 
 %description backend-gconf -l pl.UTF-8
 Backend gconf dla mcs. Używa systemu konfiguracji GConf do
-przechowywania konfiguracji i zapewnia intergrację ze środowiskiem
+przechowywania konfiguracji i zapewnia integrację ze środowiskiem
 GNOME.
 
 %package backend-kconfig
@@ -75,7 +75,7 @@ environment.
 
 %description backend-kconfig -l pl.UTF-8
 Backend kconfig dla mcs. Używa systemu konfiguracji KDE do
-przechowywania konfiguracji i zapewnia intergrację ze środowiskiem
+przechowywania konfiguracji i zapewnia integrację ze środowiskiem
 KDE.
 
 %package libs
