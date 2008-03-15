@@ -11,11 +11,12 @@ Group:		Development/Tools
 Source0:	http://distfiles.atheme.org/lib%{name}-%{version}.tgz
 # Source0-md5:	0f0c779609b3481a79937c2e86660a99
 URL:		http://www.atheme.org/projects/mcs.shtml
-BuildRequires:	GConf2-devel
-BuildRequires:	autoconf
+BuildRequires:	GConf2-devel >= 2.6.0
+BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
-BuildRequires:	kdelibs-devel
+BuildRequires:	kdelibs-devel >= 9:3.0
 BuildRequires:	libmowgli-devel >= 0.4.0
+BuildRequires:	pkgconfig
 BuildRequires:	qt-devel
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -77,18 +78,6 @@ Backend kconfig dla mcs. Używa systemu konfiguracji KDE do
 przechowywania konfiguracji i zapewnia intergrację ze środowiskiem
 KDE.
 
-%package devel
-Summary:	Header files for mcs
-Summary(pl.UTF-8):	Pliki nagłówkowe mcs
-Group:		Development/Libraries
-Requires:	%{name}-libs = %{version}-%{release}
-
-%description devel
-Header files for mcs.
-
-%description devel -l pl.UTF-8
-Pliki nagłówkowe mcs.
-
 %package libs
 Summary:	mcs library
 Summary(pl.UTF-8):	Biblioteka mcs
@@ -116,6 +105,18 @@ przeciwieństwie do nich mcs ściśle obsługuje abstrakcję. Nie nakłada
 związana z żadnym środowiskiem graficznym czy pakietem oprogramowania.
 
 Ten pakiet zawiera bibliotekę mcs.
+
+%package devel
+Summary:	Header files for mcs
+Summary(pl.UTF-8):	Pliki nagłówkowe mcs
+Group:		Development/Libraries
+Requires:	%{name}-libs = %{version}-%{release}
+
+%description devel
+Header files for mcs.
+
+%description devel -l pl.UTF-8
+Pliki nagłówkowe mcs.
 
 %prep
 %setup -q -n lib%{name}-%{version}
@@ -159,15 +160,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/kconfig.so
 
-%files devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmcs.so
-%{_includedir}/libmcs
-%{_pkgconfigdir}/libmcs.pc
-
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libmcs.so.*.*.*
 %ghost %attr(755,root,root) %{_libdir}/libmcs.so.?
 %dir %{_libdir}/%{name}
 %attr(755,root,root) %{_libdir}/%{name}/keyfile.so
+
+%files devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libmcs.so
+%{_includedir}/libmcs
+%{_pkgconfigdir}/libmcs.pc
