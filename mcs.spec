@@ -1,6 +1,3 @@
-# TODO:
-# - build GConf backend (?)
-#
 Summary:	mcs - simple, abstractable configuration library
 Summary(pl.UTF-8):	mcs - prosta, abstrakcyjna biblioteka konfiguracji
 Name:		mcs
