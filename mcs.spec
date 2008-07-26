@@ -1,12 +1,12 @@
 Summary:	mcs - simple, abstractable configuration library
 Summary(pl.UTF-8):	mcs - prosta, abstrakcyjna biblioteka konfiguracji
 Name:		mcs
-Version:	0.7.0
+Version:	0.7.1
 Release:	1
 License:	BSD
 Group:		Development/Tools
 Source0:	http://distfiles.atheme.org/lib%{name}-%{version}.tgz
-# Source0-md5:	0f0c779609b3481a79937c2e86660a99
+# Source0-md5:	1611a7bd7e7b07df3d889012d133c440
 URL:		http://www.atheme.org/projects/mcs.shtml
 BuildRequires:	GConf2-devel >= 2.6.0
 BuildRequires:	autoconf >= 2.59
@@ -72,8 +72,7 @@ environment.
 
 %description backend-kconfig -l pl.UTF-8
 Backend kconfig dla mcs. Używa systemu konfiguracji KDE do
-przechowywania konfiguracji i zapewnia integrację ze środowiskiem
-KDE.
+przechowywania konfiguracji i zapewnia integrację ze środowiskiem KDE.
 
 %package libs
 Summary:	mcs library
