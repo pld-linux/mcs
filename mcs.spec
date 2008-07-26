@@ -2,7 +2,7 @@ Summary:	mcs - simple, abstractable configuration library
 Summary(pl.UTF-8):	mcs - prosta, abstrakcyjna biblioteka konfiguracji
 Name:		mcs
 Version:	0.7.1
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Tools
 Source0:	http://distfiles.atheme.org/lib%{name}-%{version}.tgz
