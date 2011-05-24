@@ -1,0 +1,13 @@
+--- configure.ac~	2010-07-14 04:18:59.000000000 +0100
++++ configure.ac	2011-05-24 14:29:33.821633596 +0100
+@@ -87,8 +87,8 @@
+ if test "x$enable_kconfig" = "xyes"; then
+     AC_PROG_CXX
+     # XXX - does this work?
+-    KCONFIG_FLAGS="-I${kdepath}/include -I${qtpath}/include"
+-    KCONFIG_LIBS="-L${kdepath}/lib -L${qtpath}/lib"
++    KCONFIG_FLAGS="-I/usr/include/kde3 -I${qtpath}/include"
++    KCONFIG_LIBS="-L/usr/lib/kde3dev -L${qtpath}/lib"
+ 	CFLAGS_TMP="${CFLAGS}"
+ 	LDFLAGS_TMP="${LDFLAGS}"
+ 	CFLAGS="${CFLAGS} ${KCONFIG_FLAGS}"

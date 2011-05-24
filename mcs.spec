@@ -1,20 +1,20 @@
 Summary:	mcs - simple, abstractable configuration library
 Summary(pl.UTF-8):	mcs - prosta, abstrakcyjna biblioteka konfiguracji
 Name:		mcs
-Version:	0.7.1
-Release:	3
+Version:	0.7.2
+Release:	1
 License:	BSD
 Group:		Development/Tools
 Source0:	http://distfiles.atheme.org/lib%{name}-%{version}.tgz
-# Source0-md5:	1611a7bd7e7b07df3d889012d133c440
+# Source0-md5:	c47fc81f3efacaa0a5a0b8fd14f9d48e
+Patch0:		%{name}-kde3.patch
 URL:		http://www.atheme.org/projects/mcs.shtml
 BuildRequires:	GConf2-devel >= 2.6.0
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
-BuildRequires:	kdelibs-devel >= 9:3.0
+BuildRequires:	kde4-kde3support-devel
 BuildRequires:	libmowgli-devel >= 0.4.0
 BuildRequires:	pkgconfig
-BuildRequires:	qt-devel
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -116,6 +116,7 @@ Pliki nagłówkowe mcs.
 
 %prep
 %setup -q -n lib%{name}-%{version}
+%patch0 -p0
 
 %build
 QTDIR=%{_prefix}
