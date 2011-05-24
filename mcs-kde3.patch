@@ -7,7 +7,7 @@
 -    KCONFIG_FLAGS="-I${kdepath}/include -I${qtpath}/include"
 -    KCONFIG_LIBS="-L${kdepath}/lib -L${qtpath}/lib"
 +    KCONFIG_FLAGS="-I/usr/include/kde3 -I${qtpath}/include"
-+    KCONFIG_LIBS="-L/usr/lib/kde3dev -L${qtpath}/lib"
++    KCONFIG_LIBS="-L${libdir}/kde3dev -L${qtpath}/lib"
  	CFLAGS_TMP="${CFLAGS}"
  	LDFLAGS_TMP="${LDFLAGS}"
  	CFLAGS="${CFLAGS} ${KCONFIG_FLAGS}"
