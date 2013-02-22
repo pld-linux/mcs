@@ -1,3 +1,8 @@
+#
+# Conditional build:
+%bcond_without	gconf	# GConf backend
+%bcond_without	kde	# KDE(3) backend
+#
 Summary:	mcs - simple, abstractable configuration library
 Summary(pl.UTF-8):	mcs - prosta, abstrakcyjna biblioteka konfiguracji
 Name:		mcs
@@ -9,10 +14,10 @@ Source0:	http://distfiles.atheme.org/lib%{name}-%{version}.tgz
 # Source0-md5:	c47fc81f3efacaa0a5a0b8fd14f9d48e
 Patch0:		%{name}-kde3.patch
 URL:		http://www.atheme.org/projects/mcs.shtml
-BuildRequires:	GConf2-devel >= 2.6.0
+%{?with_gconf:BuildRequires:	GConf2-devel >= 2.6.0}
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
-BuildRequires:	kde4-kde3support-devel
+%{?with_kde:BuildRequires:	kde4-kde3support-devel}
 BuildRequires:	libmowgli-devel >= 0.4.0
 BuildRequires:	pkgconfig
 Requires:	%{name}-libs = %{version}-%{release}
@@ -46,6 +51,7 @@ Summary:	The gconf backend for mcs
 Summary(pl.UTF-8):	Backend gconf dla mcs
 Group:		X11/Applications
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	GConf2 >= 2.6.0
 Provides:	%{name}-backend = %{version}-%{release}
 
 %description backend-gconf
@@ -78,6 +84,7 @@ przechowywania konfiguracji i zapewnia integrację ze środowiskiem KDE.
 Summary:	mcs library
 Summary(pl.UTF-8):	Biblioteka mcs
 Group:		Libraries
+Requires:	libmowgli >= 0.4.0
 
 %description libs
 mcs is a library and set of userland tools which abstract the storage
@@ -107,6 +114,7 @@ Summary:	Header files for mcs
 Summary(pl.UTF-8):	Pliki nagłówkowe mcs
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	libmowgli-devel >= 0.4.0
 
 %description devel
 Header files for mcs.
@@ -125,7 +133,9 @@ CPPFLAGS="$CPPFLAGS -I%{_includedir}/qt"
 export CFLAGS CPPFLAGS QTDIR
 %{__aclocal} -I m4
 %{__autoconf}
-%configure
+%configure \
+	%{!?with_gconf:--disable-gconf} \
+	%{!?with_kde:--disable-kconfig}
 %{__make}
 
 %install
@@ -149,18 +159,22 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/%{name}-setconfval
 %attr(755,root,root) %{_bindir}/%{name}-walk-config
 
+%if %{with gconf}
 %files backend-gconf
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/gconf.so
+%endif
 
+%if %{with kde}
 %files backend-kconfig
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/kconfig.so
+%endif
 
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libmcs.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmcs.so.?
+%attr(755,root,root) %ghost %{_libdir}/libmcs.so.1
 %dir %{_libdir}/%{name}
 %attr(755,root,root) %{_libdir}/%{name}/keyfile.so
 
