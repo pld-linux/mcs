@@ -124,7 +124,7 @@ Pliki nagłówkowe mcs.
 
 %prep
 %setup -q -n lib%{name}-%{version}
-%patch0 -p0
+%patch -P0 -p0
 
 %build
 QTDIR=%{_prefix}
